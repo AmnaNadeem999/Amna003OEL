@@ -33,15 +33,15 @@
                     <a class="nav-link" href="#feedback">Feedback</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact Us</a>
+                    <a class="nav-link" href="#categories">Categories</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="register.html">Register</a>
                   </li>
                 </ul>
                 <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
+                  <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button id="searchbtn"class="btn btn-outline-success" type="submit">Search</button>
                 </form>
               </div>
             </div>
@@ -101,26 +101,47 @@
             <img src="Images/img.jpg">
         </div>
       </div>
-      <div id="feedback">
-          <h1 style="display:flex; color: black; font-family: Arial, Helvetica, sans-serif ; font-size: 50px; text-align: center; align-items: center; justify-content: center;">Feedback</h1>
-          <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active" data-bs-interval="10000">
-                <img src="Images/feed1.png" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item" data-bs-interval="2000">
-                <img src="Images/feed2.png" class="d-block w-100" alt="...">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+      <div id="categories" style="display:flex ;flex-wrap: wrap; justify-content: center;   margin: 20px; align-items: center; text-align: center;">
+        <h1 style="width:100%; display:flex; color: black; font-family: Arial, Helvetica, sans-serif ; font-size: 50px; text-align: center; margin-top: 50px;align-items: center; justify-content: center;">Categories</h1>
+       <div id="card1" class="card" style="width: 18rem;">
+          <img src="Images/img1.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Dish 1</h5>
+            <p class="card-text">Delicious Buffet with Chicken Recipes Mouth Watering Recipes with tender juicy tastes that enhance the flavours of your taste buds.</p>
+            <a href="#" class="btn btn-primary">Add to Cart</a>
           </div>
+        </div>
+        <div id="card2" class="card" style="width: 18rem;">
+          <img src="Images/img2.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Dish 2</h5>
+            <p class="card-text">Delicious Buffet with Chicken Recipes Mouth Watering Recipes with tender juicy tastes that enhance the flavours of your taste buds.</p>
+            <a href="#" class="btn btn-primary">Add to Cart</a>
+          </div>
+        </div>
+        <div id="card3" class="card" style="width: 18rem;">
+          <img src="Images/img1.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Dish 3</h5>
+            <p class="card-text">Delicious Buffet with Chicken Recipes Mouth Watering Recipes with tender juicy tastes that enhance the flavours of your taste buds.</p>
+            <a href="#" class="btn btn-primary">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+      <div id="feedback" >
+          <h1 style="display:flex; color: black; font-family: Arial, Helvetica, sans-serif ; font-size: 50px; text-align: center; align-items: center; justify-content: center;">Feedback</h1>
+          <div id="main" class="header">
+            <input type="text" id="newItem" placeholder="Add Feedback">
+            <span onclick="newElement()" class="BtnAdd">Add</span>
+          </div>
+          
+          <ul id="myUL">
+            <li id="bebe">Very Nice</li>
+            <li class="clicked">Good Service</li>
+            <li>Good</li>
+            <li>Expensive</li>
+          </ul>
+          <br>
       </div>
       <h1 style="display:flex; color: black; font-family: Arial, Helvetica, sans-serif ; font-size: 50px; text-align: center; align-items: center; justify-content: center; margin-top: 50px;">Provide Your Valuable Feedback</h1>
 
@@ -150,10 +171,75 @@
             <button type="submit" class="btn btn-secondary">Send Feedback</button>
         </div>
     </form>
+    <script>
+      // Create a "close" button and append it to each list item
+var myNodelist = document.getElementById("bebe");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "clicked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('clicked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("newItem").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("newItem").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+
+var search = document.getElementById("search").value;
+var searchbtn = document.getElementById("searchbtn");
+searchbtn.addEventListener("click", function() {
+if(search=="dish1"){
+
+}
+});
+
+    </script>
 
     </section>
     <footer>
-
-    </footer>
+  </footer>   
 </body>
 </html>

@@ -10,7 +10,7 @@
     <h1 style="font-family: Georgia;align-items: center;justify-content: center;text-align: center;">StarCaters Registeration</h1></header>
     
         <form class="form" style="padding: 50px; margin:50px; border: solid; border-radius: 10px;text-align: center; justify-content: center;align-items: center;" method="post">
-       Email Address: <br><input type="email" style="margin-bottom: 30px;margin-top: 10px;" >
+       Email Address: <br><input id="email" type="email" style="margin-bottom: 30px;margin-top: 10px;" >
      
      
            <br><label for="psw">Password</label>
@@ -19,7 +19,7 @@
   <ul>
     <li><a href="index.html" target="_blank" style="text-decoration: none; color: black; padding: 5px 20px;border: 1px solid grey; border-radius: 5px;font-family:Georgia;background-color:azure; margin-right: 45px;">Go TO Home</a></li></ul>
 
-             <input type="submit" value="Submit">
+             <input type="submit" value="Submit" id="sub">
            </form>
          </div>
          
@@ -90,6 +90,21 @@
             length.classList.remove("valid");
             length.classList.add("invalid");
           }
+        }
+        document.getElementById("sub").addEventListener("click",(e))=>{
+          alert("You are Registered Successfully.");
+          document.getElementById("sub").value="";
+        }
+
+        // Objects Creation
+        function validateform(){   
+  var email=document.getElementById("email").value;  
+  var psw=document.getElementById("psw").value;
+
+  var Customer = {
+    _email : email,
+    _password : psw
+}
         }
         </script>
 </body>
